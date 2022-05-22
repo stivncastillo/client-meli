@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import ItemList from "../../components/Items/ItemList";
+import ItemListSkeleton from "../../components/Items/ItemListSkeleton";
 import { useQuery } from "../../hooks/useQuery";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
@@ -22,7 +23,7 @@ const HomePage = () => {
   return (
     <div className="search-container">
       {status === "loading" ? (
-        <p>Buscando...</p>
+        <ItemListSkeleton />
       ) : items.length > 0 ? (
         <ItemList items={items} />
       ) : (
