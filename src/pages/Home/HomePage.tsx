@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import BreadcrumbList from "../../components/Common/Breadcrumbs/BreadcrumbList/BreadcrumbList";
 import ItemList from "../../components/Items/ItemList/ItemList";
 import ItemListSkeleton from "../../components/Items/ItemListSkeleton/ItemListSkeleton";
@@ -28,6 +29,14 @@ const HomePage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Mercado Libre | {`Resultados para ${q}`} </title>
+        <meta
+          name="description"
+          content={`Resultados en Mercado Libre para '${q}'`}
+        />
+      </Helmet>
+
       <BreadcrumbList data={categories} />
       <div className="main-container">
         {status === "loading" ? (

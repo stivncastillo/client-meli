@@ -1,16 +1,18 @@
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { injectStyle } from "react-toastify/dist/inject-style";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import Header from "./components/Layout/Header/Header";
-import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/Home/HomePage";
 import ItemDetailPage from "./pages/ItemDetail/ItemDetailPage";
 import Footer from "./components/Layout/Footer/Footer";
-import { useNavigate } from "react-router-dom";
+import { useQuery } from "./hooks/useQuery";
 
 const App = () => {
   const navigate = useNavigate();
+  const query = useQuery();
+  const q = query.get("q") as string;
 
   useEffect(() => {
     injectStyle();
@@ -25,8 +27,7 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <Header onSearch={handleSearch} />
-
+      <Header onSearch={handleSearch} query={q} />
       <main>
         <div className="container">
           <Routes>
@@ -35,10 +36,8 @@ const App = () => {
             <Route path="items/:id" element={<ItemDetailPage />} />
           </Routes>
         </div>
-
         <Footer />
       </main>
-
       <ToastContainer pauseOnFocusLoss={false} pauseOnHover={false} />
     </div>
   );
