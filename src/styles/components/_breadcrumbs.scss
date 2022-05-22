@@ -1,0 +1,39 @@
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-left: 0;
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &::after {
+      content: ">";
+      display: block;
+      margin: 0 0.5rem;
+    }
+
+    &:last-child {
+      & > .breadcrumbs__link {
+        color: $accents-color;
+      }
+      &::after {
+        content: "";
+      }
+    }
+  }
+
+  &__link {
+    color: $text-color;
+    font-size: .8rem;
+    text-decoration: none;
+    &:hover {
+      color: $accents-color;
+      text-decoration: underline;
+    }
+  }
+}
+

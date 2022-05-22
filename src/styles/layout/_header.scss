@@ -1,0 +1,60 @@
+.header {
+  background-color: $primary-color;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  & > .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-logo {
+    margin-right: 1rem;
+    & > img {
+      height: 1.6rem;
+    }
+  }
+
+  &-search {
+    &-container {
+      flex: 1;
+    }
+
+    &-form {
+      display: flex;
+      flex-direction: row;
+    }
+    &-input {
+      background-color: $white-color;
+      border-width: 0px;
+      padding: 0.5rem 0 0.5rem 0.5rem;
+      width: 100%;
+      border: none;
+      &:focus {
+        outline: none;
+      }
+    }
+    &-button {
+      background-color: $white-color;
+      border-width: 0px;
+      padding: 0.5rem 0.6rem;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out;
+      &:hover {
+        background-color: $background-color;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        height: 26px;
+        border-left: 1px solid $background-color;
+        position: absolute;
+        top: 5px;
+        left: 0;
+      }
+    }
+  }
+}

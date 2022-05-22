@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import { injectStyle } from "react-toastify/dist/inject-style";
 
-function App() {
+import Header from "./components/Layout/Header/Header";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/Home/HomePage";
+import ItemDetailPage from "./pages/ItemDetail/ItemDetailPage";
+import Footer from "./components/Layout/Footer/Footer";
+import { useAppDispatch } from "./store/hooks";
+import { fetchItemsAsync } from "./store/items/item.slice";
+import { useNavigate } from "react-router-dom";
+
+const App = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    injectStyle();
+  }, []);
+
+  const handleSearch = (search: string) => {
+    // dispatch(fetchItemsAsync(search));
+    navigate({
+      pathname: "/items",
+      search: `?q=${search}`,
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <Header onSearch={handleSearch} />
+
+      <main>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="items" element={<HomePage />} />
+            <Route path="items/:id" element={<ItemDetailPage />} />
+          </Routes>
+        </div>
+
+        <Footer />
+      </main>
+
+      <ToastContainer pauseOnFocusLoss={false} pauseOnHover={false} />
     </div>
   );
-}
+};
 
 export default App;
