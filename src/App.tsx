@@ -7,12 +7,9 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/Home/HomePage";
 import ItemDetailPage from "./pages/ItemDetail/ItemDetailPage";
 import Footer from "./components/Layout/Footer/Footer";
-import { useAppDispatch } from "./store/hooks";
-import { fetchItemsAsync } from "./store/items/item.slice";
 import { useNavigate } from "react-router-dom";
 
 const App = () => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,7 +17,6 @@ const App = () => {
   }, []);
 
   const handleSearch = (search: string) => {
-    // dispatch(fetchItemsAsync(search));
     navigate({
       pathname: "/items",
       search: `?q=${search}`,

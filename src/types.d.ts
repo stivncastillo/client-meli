@@ -17,10 +17,16 @@ export interface Autor {
   lastname: string
 }
 
+export interface Category {
+  id: string
+  name: string
+}
+
 export type DataResponse = {
   items: Item[]
   item: Item
   author: Autor
+  categories?: Category[]
 }
 
 export interface ApiResponse extends AppResponse {
