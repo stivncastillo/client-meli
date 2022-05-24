@@ -11,7 +11,7 @@ const BreadcrumbList = ({ data }: Props) => {
   }
 
   return (
-    <ul className="breadcrumbs">
+    <ul className="breadcrumbs" aria-labelledby="categories-list">
       {data.map((category) => (
         <li className="breadcrumbs__item" key={category.id}>
           <a href="/" className="breadcrumbs__link">

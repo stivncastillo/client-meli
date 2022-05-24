@@ -22,21 +22,6 @@ const Header: React.FC<Props> = ({ query, onTextChange, onSearch }) => {
 
   const handleSearch = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    if (!search) {
-      // TODO: crear servicio o action
-      toast.info(
-        "El texto de búsqueda está vacío, ¿Qué te interesaría buscar?",
-        {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          progress: undefined,
-        }
-      );
-      return;
-    }
-
     onSearch(search);
   };
 
@@ -56,7 +41,11 @@ const Header: React.FC<Props> = ({ query, onTextChange, onSearch }) => {
               className="header-search-input"
               onChange={handleTextChange}
             />
-            <button className="header-search-button" onClick={handleSearch}>
+            <button
+              className="header-search-button"
+              onClick={handleSearch}
+              data-testid="button-search"
+            >
               <IoSearchOutline style={{ width: 16 }} />
             </button>
           </form>

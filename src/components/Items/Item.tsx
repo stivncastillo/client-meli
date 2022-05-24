@@ -10,9 +10,13 @@ type Props = {
 const Item = ({ item }: Props) => {
   return (
     <>
-      <li className="search-item" key={item.id}>
+      <li className="search-item" key={item.id} data-testid="item-component">
         <div className="search-item__wrapper">
-          <Link to={`/items/${item.id}`} className="search-item__image">
+          <Link
+            to={`/items/${item.id}`}
+            className="search-item__image"
+            data-testid="item-image-link"
+          >
             <img src={item.picture} alt={item.title} />
           </Link>
 
@@ -26,7 +30,11 @@ const Item = ({ item }: Props) => {
                 <FaTruck style={{ width: 12 }} />
               </div>
             </div>
-            <Link to={`/items/${item.id}`} className="search-item__name">
+            <Link
+              to={`/items/${item.id}`}
+              className="search-item__name"
+              data-testid="item-image-link"
+            >
               <h3>{item.title}</h3>
             </Link>
           </div>

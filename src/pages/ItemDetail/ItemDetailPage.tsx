@@ -9,6 +9,7 @@ import {
 } from "../../store/detail/detail.slice";
 import { Helmet } from "react-helmet";
 import ItemDetailSkeleton from "./components/ItemDetailSkeleton";
+import Button from "../../components/Common/Button/Button";
 
 type NavigationParams = {
   id: string;
@@ -70,7 +71,11 @@ const ItemDetailPage = () => {
             <div className="detail-container">
               <div className="detail__info">
                 <div className="detail__image">
-                  <img src={item.picture} alt={item.title} />
+                  <img
+                    src={item.picture}
+                    alt={item.title}
+                    data-testid="detail-image"
+                  />
                 </div>
 
                 <div className="detail__description">
@@ -89,7 +94,7 @@ const ItemDetailPage = () => {
                   </span>
                 </div>
 
-                <button className="button button__primary">Comprar</button>
+                <Button primary>Comprar</Button>
               </div>
             </div>
           </>
