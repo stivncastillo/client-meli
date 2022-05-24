@@ -12,13 +12,18 @@ import { useQuery } from "./hooks/useQuery";
 export const LocationDisplay = () => {
   const location = useLocation();
 
-  return <div data-testid="location-display">{location.pathname}</div>;
+  return (
+    <div data-testid="location-display" className="hide">
+      {location.pathname}
+    </div>
+  );
 };
 
 const App = () => {
   const navigate = useNavigate();
   const query = useQuery();
   const q = query.get("q") as string;
+  console.log("prueba");
 
   useEffect(() => {
     injectStyle();

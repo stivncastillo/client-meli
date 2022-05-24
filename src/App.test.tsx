@@ -1,13 +1,12 @@
 import React from "react";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import userEvent from "@testing-library/user-event";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 
-import { render, fireEvent, screen } from "./utils/testUtils";
-import App, { LocationDisplay } from "./App";
-import { responseList } from "./__mocks__/values";
+import { render, screen } from "./utils/testUtils";
+import App from "./App";
+import { responseList } from "./testValues/values";
 
 export const handlers = [
   rest.get(`/items`, (req, res, ctx) => {
